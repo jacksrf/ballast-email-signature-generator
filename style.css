@@ -541,6 +541,10 @@ main {
     position: relative;
 }
 
+.logo {
+  width: 220px;
+}
+
 .preview_holder {
     width: 500px;
     height: 90%;
