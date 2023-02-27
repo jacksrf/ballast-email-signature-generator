@@ -100,7 +100,7 @@
               <label>Title<span class="required_astrik">*</span></label>
               <input type="text" name="title" id="title" placeholder="(Required)" class="required" required/>
             </div>
-            <div class="radio_buttons" style="margin-bottom: 30px;">
+            <!-- <div class="radio_buttons" style="margin-bottom: 30px;">
                 <label class="division" for="strategy">
                 <input type="radio" id="strategy" name="division" value="strategy">
                 <div>Strategy</div>
@@ -111,7 +111,7 @@
                 <input type="radio" id="intelligence" name="division" value="intelligence">
                 <div>Intelligence</div>
                 </label>
-            </div>
+            </div> -->
             <div class="input_holder">
               <label>Pronouns</label>
               <input type="text" name="pronouns" id="pronouns" placeholder="(Not Required)"/>
@@ -150,27 +150,6 @@
               <input type="radio" id="green" name="logo_color" value="green">
               <div><img src="https://penta-signature-generator.netlify.app//logos/green_penta.png"/></div>
               </label>
-
-
-              <label class="logo" for="red">
-              <input type="radio" id="red" name="logo_color" value="red">
-              <div><img src="https://penta-signature-generator.netlify.app//logos/red_penta.png"/></div>
-              </label>
-
-              <label class="logo" for="blue">
-              <input type="radio" id="blue" name="logo_color" value="blue">
-              <div><img src="https://penta-signature-generator.netlify.app//logos/blue_penta.png"/></div>
-              </label>
-
-              <label class="logo" for="orange">
-              <input type="radio" id="orange" name="logo_color" value="orange">
-              <div><img src="https://penta-signature-generator.netlify.app//logos/orange_penta.png"/></div>
-              </label>
-
-              <label class="logo" for="black">
-              <input type="radio" id="black" name="logo_color" value="black">
-              <div><img src="https://penta-signature-generator.netlify.app//logos/black_penta.png"/></div>
-              </label>
           </div>
         </div>
       </div>
@@ -190,31 +169,6 @@
               <div>DC</div>
               </label>
 
-
-              <label class="address" for="penta_nyc">
-              <input type="radio" id="penta_nyc" name="address" value="penta_nyc">
-              <div>NYC</div>
-              </label>
-
-              <label class="address" for="penta_sf">
-              <input type="radio" id="penta_sf" name="address" value="penta_sf">
-              <div>SF</div>
-              </label>
-
-              <label class="address" for="penta_intelligence_london">
-              <input type="radio" id="penta_intelligence_london" name="address" value="penta_intelligence_london">
-              <div>LDN</div>
-              </label>
-
-              <label class="address" for="penta_intelligence_dc">
-              <input type="radio" id="penta_intelligence_dc" name="address" value="penta_intelligence_dc">
-              <div>Ballast</div>
-              </label>
-
-              <label class="address" for="decode_nyc">
-              <input type="radio" id="decode_nyc" name="address" value="decode_nyc">
-              <div>DECODE</div>
-              </label>
           </div>
         </div>
       </div>
@@ -269,12 +223,7 @@
       });
 
       var addresses = {
-        'penta_dc': '805 15th Street NW<br>Suite 200<br>Washington, D.C. 20005',
-        'penta_nyc': '250 Park Avenue<br>Suite 2030<br>New York, NY 10177',
-        'penta_sf': '535 Mission St<br>San Francisco, CA 94105',
-        'penta_intelligence_london': 'Unit 5.10<br>The Printworks<br>164/180 Union St<br>London SE1 0LH<br>United Kingdom',
-        'penta_intelligence_dc': '1015 15th St NW<br> Suite 1100<br> Washington, DC 20005',
-        'decode_nyc': '111 W 33rd St.<br>New York, NY 10001'
+        'penta_dc': '805 15th Street NW<br>Suite 200<br>Washington, D.C. 20005'
       };
 
       $('input[type=radio][name=address]').change(function() {
