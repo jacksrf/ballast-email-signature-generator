@@ -523,11 +523,11 @@ label:hover {
 }
 
 .radio_buttons {
-    width: 100%;
-    float: left;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 main {
