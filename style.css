@@ -432,6 +432,11 @@ button {
     margin-bottom: 10px;
 }
 
+label.logo {
+  width: 25%;
+  margin: 20px;
+}
+
 input[type="checkbox"] {
     width: 20px;
     margin-bottom: 0px!important;
