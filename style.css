@@ -1,0 +1,974 @@
+@charset "UTF-8";
+/*
+Theme Name: Twenty Nineteen
+Theme URI: https://wordpress.org/themes/twentynineteen/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: Our 2019 default theme is designed to show off the power of the block editor. It features custom styles for all the default blocks, and is built so that what you see in the editor looks like what you'll see on your website. Twenty Nineteen is designed to be adaptable to a wide range of websites, whether you’re running a photo blog, launching a new business, or supporting a non-profit. Featuring ample whitespace and modern sans-serif headlines paired with classic serif body text, it's built to be beautiful on all screen sizes.
+Requires at least: WordPress 4.9.6
+Version: 1.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentynineteen
+Tags: one-column, flexible-header, accessibility-ready, custom-colors, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, rtl-language-support, sticky-post, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Twenty Nineteen is based on Underscores https://underscores.me/, (C) 2012-2019 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Variables
+# Normalize
+# Typography
+	## Headings
+	## Copy
+# Elements
+	## Lists
+	## Tables
+# Forms
+	## Buttons
+	## Fields
+# Navigation
+	## Links
+	## Menus
+	## Next & Previous
+# Accessibility
+# Alignments
+# Clearings
+# Layout
+# Widgets
+# Content
+	## Archives
+	## Posts and pages
+	## Comments
+# Blocks
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+/*
+ * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
+ * This results in a jumping cursor when typing in both the Classic and block
+ * editors. The following font-face override fixes the issue by manually inserting
+ * a custom font that includes just a Hoefler Text space replacement for that
+ * character instead.
+ */
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-Light.eot');
+   src: url('./fonts/BasisGrotesque-Light.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-Light.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-Light.woff') format('woff'),
+     url('./fonts/BasisGrotesque-Light.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-Light.svg#BasisGrotesque-Light') format('svg');
+   font-weight: 300;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-MediumItalic.eot');
+   src: url('./fonts/BasisGrotesque-MediumItalic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-MediumItalic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-MediumItalic.woff') format('woff'),
+     url('./fonts/BasisGrotesque-MediumItalic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-MediumItalic.svg#BasisGrotesque-MediumItalic') format('svg');
+   font-weight: 500;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-Black.eot');
+   src: url('./fonts/BasisGrotesque-Black.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-Black.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-Black.woff') format('woff'),
+     url('./fonts/BasisGrotesque-Black.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-Black.svg#BasisGrotesque-Black') format('svg');
+   font-weight: 900;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Mono';
+   src: url('./fonts/BasisGrotesqueMono-LightItalic.eot');
+   src: url('./fonts/BasisGrotesqueMono-LightItalic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesqueMono-LightItalic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesqueMono-LightItalic.woff') format('woff'),
+     url('./fonts/BasisGrotesqueMono-LightItalic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesqueMono-LightItalic.svg#BasisGrotesqueMono-LightItalic') format('svg');
+   font-weight: 300;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-LightItalic.eot');
+   src: url('./fonts/BasisGrotesque-LightItalic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-LightItalic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-LightItalic.woff') format('woff'),
+     url('./fonts/BasisGrotesque-LightItalic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-LightItalic.svg#BasisGrotesque-LightItalic') format('svg');
+   font-weight: 300;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Mono';
+   src: url('./fonts/BasisGrotesqueMono-Bold.eot');
+   src: url('./fonts/BasisGrotesqueMono-Bold.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesqueMono-Bold.woff2') format('woff2'),
+     url('./fonts/BasisGrotesqueMono-Bold.woff') format('woff'),
+     url('./fonts/BasisGrotesqueMono-Bold.ttf') format('truetype'),
+     url('./fonts/BasisGrotesqueMono-Bold.svg#BasisGrotesqueMono-Bold') format('svg');
+   font-weight: bold;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-BlackItalic.eot');
+   src: url('./fonts/BasisGrotesque-BlackItalic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-BlackItalic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-BlackItalic.woff') format('woff'),
+     url('./fonts/BasisGrotesque-BlackItalic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-BlackItalic.svg#BasisGrotesque-BlackItalic') format('svg');
+   font-weight: 900;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Mono';
+   src: url('./fonts/BasisGrotesqueMono-Italic.eot');
+   src: url('./fonts/BasisGrotesqueMono-Italic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesqueMono-Italic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesqueMono-Italic.woff') format('woff'),
+     url('./fonts/BasisGrotesqueMono-Italic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesqueMono-Italic.svg#BasisGrotesqueMono-Italic') format('svg');
+   font-weight: normal;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-BoldItalic.eot');
+   src: url('./fonts/BasisGrotesque-BoldItalic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-BoldItalic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-BoldItalic.woff') format('woff'),
+     url('./fonts/BasisGrotesque-BoldItalic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-BoldItalic.svg#BasisGrotesque-BoldItalic') format('svg');
+   font-weight: bold;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-Medium.eot');
+   src: url('./fonts/BasisGrotesque-Medium.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-Medium.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-Medium.woff') format('woff'),
+     url('./fonts/BasisGrotesque-Medium.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-Medium.svg#BasisGrotesque-Medium') format('svg');
+   font-weight: 500;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Mono';
+   src: url('./fonts/BasisGrotesqueMono-BoldItalic.eot');
+   src: url('./fonts/BasisGrotesqueMono-BoldItalic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesqueMono-BoldItalic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesqueMono-BoldItalic.woff') format('woff'),
+     url('./fonts/BasisGrotesqueMono-BoldItalic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesqueMono-BoldItalic.svg#BasisGrotesqueMono-BoldItalic') format('svg');
+   font-weight: bold;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-Italic.eot');
+   src: url('./fonts/BasisGrotesque-Italic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-Italic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-Italic.woff') format('woff'),
+     url('./fonts/BasisGrotesque-Italic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-Italic.svg#BasisGrotesque-Italic') format('svg');
+   font-weight: normal;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Mono';
+   src: url('./fonts/BasisGrotesqueMono-Medium.eot');
+   src: url('./fonts/BasisGrotesqueMono-Medium.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesqueMono-Medium.woff2') format('woff2'),
+     url('./fonts/BasisGrotesqueMono-Medium.woff') format('woff'),
+     url('./fonts/BasisGrotesqueMono-Medium.ttf') format('truetype'),
+     url('./fonts/BasisGrotesqueMono-Medium.svg#BasisGrotesqueMono-Medium') format('svg');
+   font-weight: 500;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Mono';
+   src: url('./fonts/BasisGrotesqueMono-Light.eot');
+   src: url('./fonts/BasisGrotesqueMono-Light.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesqueMono-Light.woff2') format('woff2'),
+     url('./fonts/BasisGrotesqueMono-Light.woff') format('woff'),
+     url('./fonts/BasisGrotesqueMono-Light.ttf') format('truetype'),
+     url('./fonts/BasisGrotesqueMono-Light.svg#BasisGrotesqueMono-Light') format('svg');
+   font-weight: 300;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque';
+   src: url('./fonts/BasisGrotesque-Regular.eot');
+   src: url('./fonts/BasisGrotesque-Regular.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-Regular.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-Regular.woff') format('woff'),
+     url('./fonts/BasisGrotesque-Regular.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-Regular.svg#BasisGrotesque-Regular') format('svg');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Off-White';
+   src: url('./fonts/BasisGrotesque-Off-WhiteItalic.eot');
+   src: url('./fonts/BasisGrotesque-Off-WhiteItalic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-Off-WhiteItalic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-Off-WhiteItalic.woff') format('woff'),
+     url('./fonts/BasisGrotesque-Off-WhiteItalic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-Off-WhiteItalic.svg#BasisGrotesque-Off-WhiteItalic') format('svg');
+   font-weight: normal;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Off-White';
+   src: url('./fonts/BasisGrotesque-Off-White.eot');
+   src: url('./fonts/BasisGrotesque-Off-White.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesque-Off-White.woff2') format('woff2'),
+     url('./fonts/BasisGrotesque-Off-White.woff') format('woff'),
+     url('./fonts/BasisGrotesque-Off-White.ttf') format('truetype'),
+     url('./fonts/BasisGrotesque-Off-White.svg#BasisGrotesque-Off-White') format('svg');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Mono';
+   src: url('./fonts/BasisGrotesqueMono-MediumItalic.eot');
+   src: url('./fonts/BasisGrotesqueMono-MediumItalic.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesqueMono-MediumItalic.woff2') format('woff2'),
+     url('./fonts/BasisGrotesqueMono-MediumItalic.woff') format('woff'),
+     url('./fonts/BasisGrotesqueMono-MediumItalic.ttf') format('truetype'),
+     url('./fonts/BasisGrotesqueMono-MediumItalic.svg#BasisGrotesqueMono-MediumItalic') format('svg');
+   font-weight: 500;
+   font-style: italic;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Basis-Grotesque-Mono';
+   src: url('./fonts/BasisGrotesqueMono-Regular.eot');
+   src: url('./fonts/BasisGrotesqueMono-Regular.eot?#iefix') format('embedded-opentype'),
+     url('./fonts/BasisGrotesqueMono-Regular.woff2') format('woff2'),
+     url('./fonts/BasisGrotesqueMono-Regular.woff') format('woff'),
+     url('./fonts/BasisGrotesqueMono-Regular.ttf') format('truetype'),
+     url('./fonts/BasisGrotesqueMono-Regular.svg#BasisGrotesqueMono-Regular') format('svg');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ body {
+     margin: 0px;
+     padding: 0px;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     width: 100vw;
+     height: 100vh;
+     overflow: hidden;
+     display: flex;
+     justify-content: center;
+ }
+
+ .nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 48px 56px;
+    box-sizing: border-box;
+}
+
+div#sig-form {
+    float: left;
+    width: 100%;
+    margin-bottom: 75px;
+}
+
+.input_holder {
+    /* margin-bottom: 50px; */
+    font-size: 15px;
+    /* font-family: futurats-regular; */
+    letter-spacing: .14px;
+    line-height: 25px;
+    color: #4d4d4d;
+    float: left;
+    width: 33.333%;
+    padding-right: 0%;
+}
+
+.input_holder label {
+    width: 100%;
+    float: left;
+}
+
+.input_holder input {
+    height: 29px!important;
+    width: 100%;
+    float: left;
+    background: transparent;
+    border: 1px solid #B9B7B5;
+    background-color: transparent;
+    color: #4D4D4D;
+    font-size: 14px;
+    line-height: 29px;
+    /* font-family: futurats-regular; */
+    letter-spacing: 1.4px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    margin: 0px 0px 20px 0px!important;
+}
+
+div#page {
+    padding: 5%;
+}
+
+.site-header {
+    margin: 0;
+    padding: 0!important;
+}
+
+main {
+    padding: 5vh 5vw;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+}
+
+button#submit {
+    background: #1A1A1A;
+    color: white;
+    /* height: 32px; */
+    /* width: 80%; */
+    border: 1px solid #1A1A1A;
+    /* margin-left: 10%; */
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    /* line-height: 28px; */
+    /* font-family: futurats-regular; */
+    cursor: pointer;
+    padding: 10px 40px;
+    border-radius: 0px;
+    margin-top: 40px;
+}
+
+button {
+    background: #1A1A1A;
+    color: white;
+    /* height: 32px; */
+    /* width: 80%; */
+    border: 1px solid #1A1A1A;
+    /* margin-left: 10%; */
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    /* line-height: 28px; */
+    /* font-family: futurats-regular; */
+    cursor: pointer;
+    padding: 10px 40px;
+    border-radius: 0px;
+    text-transform: uppercase;
+}
+
+.signature {
+    width: 100%;
+    float: left;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    margin-bottom: 0px!important;
+    margin-right: 10px!important;
+}
+img {
+  image-rendering: crisp-edges;
+max-width: 100%;
+}
+
+tr{
+font-family: 'Helvetica';
+
+}
+
+.rbcc{
+border: 0;
+}
+
+.background{
+width:100%;
+}
+
+.main{
+width:100%;
+background-color: #ffffff;
+}
+
+.sp{
+  table-layout: fixed;
+}
+
+.sp__inner{
+  height: 12px;
+  width: 100%;
+  color: #606161;
+  font-size: 12px;
+}
+
+label.address {
+    font-family: 'Basis-Grotesque';
+    margin-bottom: 30px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+
+label.address > div {
+    height: auto;
+    margin-top: 10px;
+}
+
+.radio_buttons > label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60px;
+    /* margin-right: 30px; */
+    flex-direction: column;
+    opacity: 1;
+    transition: all 500ms;
+    -webkit-transition: all 500ms;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    border: 1px solid #C5C5C5;
+}
+
+label.active {
+    opacity: 1;
+}
+
+label:hover {
+  opacity: 1;
+}
+
+.radio_buttons > label > div {
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio_buttons {
+    width: 100%;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main {
+    padding: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+    overflow: hidden;
+    height: 100vh;
+    max-width: 1400px;
+    position: relative;
+}
+
+.preview_holder {
+    width: 500px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: #F1FFF8;
+    border: 1px solid #DADADA;
+    border-radius: 48px;
+    padding: 51px;
+    box-sizing: border-box;
+    float: left;
+    position: absolute;
+    top: 5vh;
+    left: 48px;
+    z-index: 100;
+}
+
+.preview {
+    background: #FFFFFF;
+    border: 1.0962px solid #DADADA;
+    border-radius: 40px;
+    padding: 10%;
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    /* width: 410px; */
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview .signature div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview_background {
+    background: linear-gradient(0deg, #1CBD83, #1CBD83), url(./14.png);
+    background-blend-mode: screen, normal;
+    opacity: 0.13;
+    transform: matrix(-0.56, -0.83, -0.83, 0.56, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    width: 1334.32px;
+    height: 1127.12px;
+    /* left: 982.7px; */
+    /* top: 793.83px; */
+}
+
+.preview_background {
+    display: none;
+}
+
+.copy_button button {
+    background: #FFFFFF;
+    border: 1px solid #DADADA;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px 24px 13px;
+    gap: 8px;
+    font-family: 'Basis-Grotesque-Off-White';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 17px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: #000000;
+    text-transform: unset;
+}
+
+.steps {
+    width: calc(100%);
+    float: left;
+    padding: 60px 48px 0px 598px;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow: scroll;
+    transform: translate(0px, 0vh);
+}
+
+.step {
+    width: 100%;
+    float: left;
+}
+
+.step:nth-child(4) {
+    padding-bottom: 200px;
+}
+
+.step_number {
+    font-family: 'Basis-Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    color: #FF0039;
+    width: 115px;
+    float: left;
+}
+
+.step_content {
+    width: calc(100% - 115px);
+    float: left;
+}
+
+.step_copy {
+    font-family: 'Basis-Grotesque';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 24px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin-bottom: 32px;
+}
+
+.inputs .input_holder {
+    width: 100%;
+}
+
+.inputs .input_holder label {
+    /* display: none; */
+    font-family: 'Basis-Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+span.required_astrik {
+    color: #FF0039;
+    font-size: 20px;
+}
+
+input.alert {
+    border: 1px solid red!important;
+}
+
+label.address {
+    width: 25%;
+}
+
+div#alert {
+    height: 50px;
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000000;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 1000ms;
+    -webkit-transition: all 1000ms
+}
+
+div#alert.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.alert_holder {
+    padding: 0px 30px;
+    border-radius: 15px;
+    background: #F1FFF8;
+    border: 1px solid #DADADA;
+    /* border: 1px solid rgba(196,54,26, 1); */
+    color: white;
+    font-family: 'GT Walsheim';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #2BB781;
+    moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+}
+
+::selection {background-color: #ffffcc;}
+
+.input_holder input {
+    height: 64px!important;
+    border: 1px solid #C5C5C5;
+    border-radius: 12px;
+    font-family: 'Basis-Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    color: black;
+    padding: 24px 23px;
+    margin-bottom: 32px!important;
+}
+
+input::-webkit-input-placeholder { /* Edge */
+  color: #ADADAD;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #ADADAD;
+}
+
+input::placeholder {
+  color: #ADADAD;
+}
+
+.input_holder.half {
+    width: calc(50% - 12px);
+}
+
+.inputs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.preview_title {
+    font-family: 'Basis-Grotesque';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #DADADA;
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    left: 0;
+    transition: all 500ms;
+    -webkit-transition: all 500ms;
+}
+
+.copy_button button.enabled {
+    background: #2BB781;
+    border: 1px solid #DADADA;
+    border-radius: 24px;
+    color: white;
+}
+
+.radio_buttons {
+    margin-bottom: 100px;
+}
+
+input[type="radio"] {
+    border: 1px solid #C5C5C5;
+    /* -webkit-appearance: none; */
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #C5C5C5;
+    border-radius: 50%;
+    outline: none;
+    /* box-shadow: 0 0 5px 0px #c5c5c5 inset; */
+}
+
+input[type="radio"]:hover {
+    box-shadow: 0 0 5px 0px #c5c5c5 inset;
+}
+
+input[type='radio']:before {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 60%;
+    margin: 20% auto;
+    border-radius: 50%;
+}
+
+label.active input[type='radio']:before {
+    background: black;
+}
+
+.radio_buttons:hover label.logo:not(:hover) {
+    opacity: .2;
+}
+
+.radio_buttons.active label.logo:not(.active) {
+    opacity: .2;
+}
+
+.radio_buttons.active label.logo.active {
+    opacity: 1;
+}
+
+.radio_buttons:hover label.division:not(:hover) {
+    opacity: .2;
+}
+
+.radio_buttons.active label.division:not(.active) {
+    opacity: .2;
+}
+
+.radio_buttons.active label.division.active {
+    opacity: 1;
+}
+
+label.division {
+    width: 50%;
+    font-family: 'Basis-Grotesque';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 100%;
+    display: flex;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (max-width: 1200px) {
+
+  .step_number {
+    font-family: 'Basis-Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    color: #FF0039;
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+  .step_content {
+    width: calc(100% - 0px);
+    float: left;
+}
+}
+
+
+@media all and (max-width: 1000px) {
+  main {
+      padding: 48px 0px;
+      box-sizing: border-box;
+      width: 100%;
+      float: left;
+      overflow: auto;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+  }
+
+  body {
+    margin: 0px;
+    padding: 0px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100vw;
+    height: auto;
+    overflow: auto;
+}
+
+.preview_holder {
+    width: 90%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #F1FFF8;
+    border: 1px solid #DADADA;
+    border-radius: 48px;
+    padding: 12% 5%;
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    /* z-index: 1; */
+    left: unset;
+    top: unset;
+    transform: unset;
+    order: 2;
+}
+
+.steps {
+    width: calc(100% - 0px);
+    float: left;
+    padding: 5%;
+    box-sizing: border-box;
+    height: auto;
+    overflow: visible;
+    transform: translate(0px, -5vh);
+    order: 1;
+}
+
+.step:nth-child(3) {
+    padding-bottom: 0px;
+}
+}
