@@ -60,7 +60,7 @@
                             </p>
                             <p style="margin-top:20px; margin-bottom:12px; line-height:1.0; display: none; border: 0; outline: 0;" id="logo_holder">
                               <span style="font-size: 14px; line-height: 18px; letter-spacing: -0.02em; font-family: Arial, sans-serif; color: #000000; border: 0; outline: 0;" class="ng-binding ng-scope">
-                                <a href="https://pentagroup.co" style="color: inherit; text-decoration: none; border: 0; outline: 0;"><img id="logo" style="width: 88px; height: 25px; border: 0; outline: 0;" height="25" width="88" src="https://penta-signature-generator.netlify.app/logos/gray_penta.png" /></a>
+                                <a href="https://pentagroup.co" style="color: inherit; text-decoration: none; border: 0; outline: 0;"><img id="logo" style="width: 88px; height: 25px; border: 0; outline: 0;" height="25" width="88" src="https://ppi-email-signature-generator.netlify.app/logos/gray_penta.png" /></a>
                               </span>
                             </p>
                           </td>
@@ -100,7 +100,7 @@
               <label>Title<span class="required_astrik">*</span></label>
               <input type="text" name="title" id="title" placeholder="(Required)" class="required" required/>
             </div>
-            <!-- <div class="radio_buttons" style="margin-bottom: 30px;">
+            <div class="radio_buttons" style="margin-bottom: 30px;">
                 <label class="division" for="strategy">
                 <input type="radio" id="strategy" name="division" value="strategy">
                 <div>Strategy</div>
@@ -111,7 +111,7 @@
                 <input type="radio" id="intelligence" name="division" value="intelligence">
                 <div>Intelligence</div>
                 </label>
-            </div> -->
+            </div>
             <div class="input_holder">
               <label>Pronouns</label>
               <input type="text" name="pronouns" id="pronouns" placeholder="(Not Required)"/>
@@ -147,8 +147,13 @@
           <div class="step_copy">Next, select your preference for logo color.</div>
           <div class="radio_buttons">
               <label class="logo" for="green">
-              <input type="radio" id="green" name="logo_color" value="green">
-              <div><img src="https://penta-signature-generator.netlify.app//logos/green_penta.png"/></div>
+              <input type="radio" id="green" name="logo_color" value="PPI_Stacked_RGB_DarkGreenBlack">
+              <div><img src="https://ppi-email-signature-generator.netlify.app/logos/PPI_Stacked_RGB_DarkGreenBlack.png"/></div>
+              </label>
+
+              <label class="logo" for="black">
+              <input type="radio" id="black" name="logo_color" value="PPI_Stacked_RGB_Black">
+              <div><img src="https://ppi-email-signature-generator.netlify.app/logos/PPI_Stacked_RGB_Black.png"/></div>
               </label>
           </div>
         </div>
@@ -168,7 +173,6 @@
               <input type="radio" id="penta_dc" name="address" value="penta_dc">
               <div>DC</div>
               </label>
-
           </div>
         </div>
       </div>
@@ -219,7 +223,7 @@
           $(this).parent().parent().addClass('active')
           $('.logo.active').removeClass('active')
           $(this).parent('label').addClass('active')
-          $('#logo').attr('src', 'https://penta-signature-generator.netlify.app/logos/'+ this.value+ '_penta.png')
+          $('#logo').attr('src', 'https://ppi-email-signature-generator.netlify.app/logos/'+ this.value+ '.png')
       });
 
       var addresses = {
